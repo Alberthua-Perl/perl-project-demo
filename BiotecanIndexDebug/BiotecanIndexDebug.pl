@@ -1,19 +1,18 @@
 #!/usr/bin/perl
 
-# Copyright (C) 2017.8.19 12:50 hfhua@biotecan.com (HLF)
+# Copyright (C) 2017.8.19 12:50 hfhua@biotecan.com
 # Using file: RawIndex{1~6}.txt, IndexList.txt
 # Usage: 
 # 	Checking indexes of samlplesheet for running NextSeq CN500 is repeating and conflicting or not.
 #	
-#	perl BiotecanIndexDebug.pl
-
-##################################################################
-# Please pay attention to following information:				 #
-# [ ERROR ]	 : An important error, you must deal with at once.   #
-# [ CAUTION ]: You should know that to deal with error.			 #
-# [ INFO ]	 : An universal information.						 #
-# [ PASS ]	 : A good result you want.							 #
-##################################################################
+#	$ perl BiotecanIndexDebug.pl
+# 
+# Note:
+#   Please pay attention to following information:
+#   [ ERROR ]  : An important error, you must deal with at once.
+#   [ CAUTION ]: You should know that to deal with error.
+#   [ INFO ]   : An universal information.
+#   [ PASS ]   : A good result you want.
 
 use warnings;
 use strict;
