@@ -1,0 +1,31 @@
+    write FILEHANDLE
+    write EXPR
+    write   Writes a formatted record (possibly multi-line) to the specified
+            FILEHANDLE, using the format associated with that file. By
+            default the format for a file is the one having the same name as
+            the filehandle, but the format for the current output channel
+            (see the "select" function) may be set explicitly by assigning
+            the name of the format to the $~ variable.
+
+            Top of form processing is handled automatically: if there is
+            insufficient room on the current page for the formatted record,
+            the page is advanced by writing a form feed and a special
+            top-of-page format is used to format the new page header before
+            the record is written. By default, the top-of-page format is the
+            name of the filehandle with "_TOP" appended, or "top" in the
+            current package if the former does not exist. This would be a
+            problem with autovivified filehandles, but it may be dynamically
+            set to the format of your choice by assigning the name to the $^
+            variable while that filehandle is selected. The number of lines
+            remaining on the current page is in variable $-, which can be
+            set to 0 to force a new page.
+
+            If FILEHANDLE is unspecified, output goes to the current default
+            output channel, which starts out as STDOUT but may be changed by
+            the "select" operator. If the FILEHANDLE is an EXPR, then the
+            expression is evaluated and the resulting string is used to look
+            up the name of the FILEHANDLE at run time. For more on formats,
+            see perlform.
+
+            Note that write is *not* the opposite of "read". Unfortunately.
+

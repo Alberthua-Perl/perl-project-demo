@@ -1,0 +1,64 @@
+    unpack TEMPLATE,EXPR
+    unpack TEMPLATE
+            "unpack" does the reverse of "pack": it takes a string and
+            expands it out into a list of values. (In scalar context, it
+            returns merely the first value produced.)
+
+            If EXPR is omitted, unpacks the $_ string. See perlpacktut for
+            an introduction to this function.
+
+            The string is broken into chunks described by the TEMPLATE. Each
+            chunk is converted separately to a value. Typically, either the
+            string is a result of "pack", or the characters of the string
+            represent a C structure of some kind.
+
+            The TEMPLATE has the same format as in the "pack" function.
+            Here's a subroutine that does substring:
+
+                sub substr {
+                    my ($what, $where, $howmuch) = @_;
+                    unpack("x$where a$howmuch", $what);
+                }
+
+            and then there's
+
+                sub ordinal { unpack("W",$_[0]); } # same as ord()
+
+            In addition to fields allowed in "pack", you may prefix a field
+            with a %<number> to indicate that you want a <number>-bit
+            checksum of the items instead of the items themselves. Default
+            is a 16-bit checksum. The checksum is calculated by summing
+            numeric values of expanded values (for string fields the sum of
+            "ord($char)" is taken; for bit fields the sum of zeroes and
+            ones).
+
+            For example, the following computes the same number as the
+            System V sum program:
+
+                my $checksum = do {
+                    local $/;  # slurp!
+                    unpack("%32W*", readline) % 65535;
+                };
+
+            The following efficiently counts the number of set bits in a bit
+            vector:
+
+                my $setbits = unpack("%32b*", $selectmask);
+
+            The "p" and "P" formats should be used with care. Since Perl has
+            no way of checking whether the value passed to "unpack"
+            corresponds to a valid memory location, passing a pointer value
+            that's not known to be valid is likely to have disastrous
+            consequences.
+
+            If there are more pack codes or if the repeat count of a field
+            or a group is larger than what the remainder of the input string
+            allows, the result is not well defined: the repeat count may be
+            decreased, or "unpack" may produce empty strings or zeros, or it
+            may raise an exception. If the input string is longer than one
+            described by the TEMPLATE, the remainder of that input string is
+            ignored.
+
+            See "pack" for more examples and notes.
+
+

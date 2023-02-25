@@ -1,0 +1,101 @@
+    select FILEHANDLE
+    select  Returns the currently selected filehandle. If FILEHANDLE is
+            supplied, sets the new current default filehandle for output.
+            This has two effects: first, a "write" or a "print" without a
+            filehandle default to this FILEHANDLE. Second, references to
+            variables related to output will refer to this output channel.
+
+            For example, to set the top-of-form format for more than one
+            output channel, you might do the following:
+
+                select(REPORT1);
+                $^ = 'report1_top';
+                select(REPORT2);
+                $^ = 'report2_top';
+
+            FILEHANDLE may be an expression whose value gives the name of
+            the actual filehandle. Thus:
+
+                my $oldfh = select(STDERR); $| = 1; select($oldfh);
+
+            Some programmers may prefer to think of filehandles as objects
+            with methods, preferring to write the last example as:
+
+                STDERR->autoflush(1);
+
+            (Prior to Perl version 5.14, you have to "use IO::Handle;"
+            explicitly first.)
+
+            Portability issues: "select" in perlport.
+
+    select RBITS,WBITS,EBITS,TIMEOUT
+            This calls the select(2) syscall with the bit masks specified,
+            which can be constructed using "fileno" and "vec", along these
+            lines:
+
+                my $rin = my $win = my $ein = '';
+                vec($rin, fileno(STDIN),  1) = 1;
+                vec($win, fileno(STDOUT), 1) = 1;
+                $ein = $rin | $win;
+
+            If you want to select on many filehandles, you may wish to write
+            a subroutine like this:
+
+                sub fhbits {
+                    my @fhlist = @_;
+                    my $bits = "";
+                    for my $fh (@fhlist) {
+                        vec($bits, fileno($fh), 1) = 1;
+                    }
+                    return $bits;
+                }
+                my $rin = fhbits(\*STDIN, $tty, $mysock);
+
+            The usual idiom is:
+
+             my ($nfound, $timeleft) =
+               select(my $rout = $rin, my $wout = $win, my $eout = $ein,
+                                                                      $timeout);
+
+            or to block until something becomes ready just do this
+
+             my $nfound =
+               select(my $rout = $rin, my $wout = $win, my $eout = $ein, undef);
+
+            Most systems do not bother to return anything useful in
+            $timeleft, so calling "select" in scalar context just returns
+            $nfound.
+
+            Any of the bit masks can also be "undef". The timeout, if
+            specified, is in seconds, which may be fractional. Note: not all
+            implementations are capable of returning the $timeleft. If not,
+            they always return $timeleft equal to the supplied $timeout.
+
+            You can effect a sleep of 250 milliseconds this way:
+
+                select(undef, undef, undef, 0.25);
+
+            Note that whether "select" gets restarted after signals (say,
+            SIGALRM) is implementation-dependent. See also perlport for
+            notes on the portability of "select".
+
+            On error, "select" behaves just like select(2): it returns -1
+            and sets $!.
+
+            On some Unixes, select(2) may report a socket file descriptor as
+            "ready for reading" even when no data is available, and thus any
+            subsequent "read" would block. This can be avoided if you always
+            use "O_NONBLOCK" on the socket. See select(2) and fcntl(2) for
+            further details.
+
+            The standard "IO::Select" module provides a user-friendlier
+            interface to "select", mostly because it does all the bit-mask
+            work for you.
+
+            WARNING: One should not attempt to mix buffered I/O (like "read"
+            or "readline") with "select", except as permitted by POSIX, and
+            even then only on POSIX systems. You have to use "sysread"
+            instead.
+
+            Portability issues: "select" in perlport.
+

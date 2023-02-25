@@ -1,0 +1,18 @@
+    pipe READHANDLE,WRITEHANDLE
+            Opens a pair of connected pipes like the corresponding system
+            call. Note that if you set up a loop of piped processes,
+            deadlock can occur unless you are very careful. In addition,
+            note that Perl's pipes use IO buffering, so you may need to set
+            $| to flush your WRITEHANDLE after each command, depending on
+            the application.
+
+            Returns true on success.
+
+            See IPC::Open2, IPC::Open3, and "Bidirectional Communication
+            with Another Process" in perlipc for examples of such things.
+
+            On systems that support a close-on-exec flag on files, that flag
+            is set on all newly opened file descriptors whose "fileno"s are
+            *higher* than the current value of $^F (by default 2 for
+            "STDERR"). See "$^F" in perlvar.
+

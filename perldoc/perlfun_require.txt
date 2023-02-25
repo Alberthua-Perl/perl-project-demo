@@ -1,0 +1,199 @@
+    require VERSION
+    require EXPR
+    require Demands a version of Perl specified by VERSION, or demands some
+            semantics specified by EXPR or by $_ if EXPR is not supplied.
+
+            VERSION may be either a numeric argument such as 5.006, which
+            will be compared to $], or a literal of the form v5.6.1, which
+            will be compared to $^V (or $PERL_VERSION in English). An
+            exception is raised if VERSION is greater than the version of
+            the current Perl interpreter. Compare with "use", which can do a
+            similar check at compile time.
+
+            Specifying VERSION as a literal of the form v5.6.1 should
+            generally be avoided, because it leads to misleading error
+            messages under earlier versions of Perl that do not support this
+            syntax. The equivalent numeric version should be used instead.
+
+                require v5.6.1;     # run time version check
+                require 5.6.1;      # ditto
+                require 5.006_001;  # ditto; preferred for backwards
+                                      compatibility
+
+            Otherwise, "require" demands that a library file be included if
+            it hasn't already been included. The file is included via the
+            do-FILE mechanism, which is essentially just a variety of "eval"
+            with the caveat that lexical variables in the invoking script
+            will be invisible to the included code. If it were implemented
+            in pure Perl, it would have semantics similar to the following:
+
+                use Carp 'croak';
+                use version;
+
+                sub require {
+                    my ($filename) = @_;
+                    if ( my $version = eval { version->parse($filename) } ) {
+                        if ( $version > $^V ) {
+                           my $vn = $version->normal;
+                           croak "Perl $vn required--this is only $^V, stopped";
+                        }
+                        return 1;
+                    }
+
+                    if (exists $INC{$filename}) {
+                        return 1 if $INC{$filename};
+                        croak "Compilation failed in require";
+                    }
+
+                    foreach $prefix (@INC) {
+                        if (ref($prefix)) {
+                            #... do other stuff - see text below ....
+                        }
+                        # (see text below about possible appending of .pmc
+                        # suffix to $filename)
+                        my $realfilename = "$prefix/$filename";
+                        next if ! -e $realfilename || -d _ || -b _;
+                        $INC{$filename} = $realfilename;
+                        my $result = do($realfilename);
+                                     # but run in caller's namespace
+
+                        if (!defined $result) {
+                            $INC{$filename} = undef;
+                            croak $@ ? "$@Compilation failed in require"
+                                     : "Can't locate $filename: $!\n";
+                        }
+                        if (!$result) {
+                            delete $INC{$filename};
+                            croak "$filename did not return true value";
+                        }
+                        $! = 0;
+                        return $result;
+                    }
+                    croak "Can't locate $filename in \@INC ...";
+                }
+
+            Note that the file will not be included twice under the same
+            specified name.
+
+            The file must return true as the last statement to indicate
+            successful execution of any initialization code, so it's
+            customary to end such a file with "1;" unless you're sure it'll
+            return true otherwise. But it's better just to put the "1;", in
+            case you add more statements.
+
+            If EXPR is a bareword, "require" assumes a .pm extension and
+            replaces "::" with "/" in the filename for you, to make it easy
+            to load standard modules. This form of loading of modules does
+            not risk altering your namespace.
+
+            In other words, if you try this:
+
+                    require Foo::Bar;     # a splendid bareword
+
+            The require function will actually look for the Foo/Bar.pm file
+            in the directories specified in the @INC array.
+
+            But if you try this:
+
+                    my $class = 'Foo::Bar';
+                    require $class;       # $class is not a bareword
+                #or
+                    require "Foo::Bar";   # not a bareword because of the ""
+
+            The require function will look for the Foo::Bar file in the @INC
+            array and will complain about not finding Foo::Bar there. In
+            this case you can do:
+
+                    eval "require $class";
+
+            Now that you understand how "require" looks for files with a
+            bareword argument, there is a little extra functionality going
+            on behind the scenes. Before "require" looks for a .pm
+            extension, it will first look for a similar filename with a .pmc
+            extension. If this file is found, it will be loaded in place of
+            any file ending in a .pm extension.
+
+            You can also insert hooks into the import facility by putting
+            Perl code directly into the @INC array. There are three forms of
+            hooks: subroutine references, array references, and blessed
+            objects.
+
+            Subroutine references are the simplest case. When the inclusion
+            system walks through @INC and encounters a subroutine, this
+            subroutine gets called with two parameters, the first a
+            reference to itself, and the second the name of the file to be
+            included (e.g., Foo/Bar.pm). The subroutine should return either
+            nothing or else a list of up to four values in the following
+            order:
+
+            1   A reference to a scalar, containing any initial source code
+                to prepend to the file or generator output.
+
+            2   A filehandle, from which the file will be read.
+
+            3   A reference to a subroutine. If there is no filehandle
+                (previous item), then this subroutine is expected to
+                generate one line of source code per call, writing the line
+                into $_ and returning 1, then finally at end of file
+                returning 0. If there is a filehandle, then the subroutine
+                will be called to act as a simple source filter, with the
+                line as read in $_. Again, return 1 for each valid line, and
+                0 after all lines have been returned.
+
+            4   Optional state for the subroutine. The state is passed in as
+                $_[1]. A reference to the subroutine itself is passed in as
+                $_[0].
+
+            If an empty list, "undef", or nothing that matches the first 3
+            values above is returned, then "require" looks at the remaining
+            elements of @INC. Note that this filehandle must be a real
+            filehandle (strictly a typeglob or reference to a typeglob,
+            whether blessed or unblessed); tied filehandles will be ignored
+            and processing will stop there.
+
+            If the hook is an array reference, its first element must be a
+            subroutine reference. This subroutine is called as above, but
+            the first parameter is the array reference. This lets you
+            indirectly pass arguments to the subroutine.
+
+            In other words, you can write:
+
+                push @INC, \&my_sub;
+                sub my_sub {
+                    my ($coderef, $filename) = @_;  # $coderef is \&my_sub
+                    ...
+                }
+
+            or:
+
+                push @INC, [ \&my_sub, $x, $y, ... ];
+                sub my_sub {
+                    my ($arrayref, $filename) = @_;
+                    # Retrieve $x, $y, ...
+                    my (undef, @parameters) = @$arrayref;
+                    ...
+                }
+
+            If the hook is an object, it must provide an "INC" method that
+            will be called as above, the first parameter being the object
+            itself. (Note that you must fully qualify the sub's name, as
+            unqualified "INC" is always forced into package "main".) Here is
+            a typical code layout:
+
+                # In Foo.pm
+                package Foo;
+                sub new { ... }
+                sub Foo::INC {
+                    my ($self, $filename) = @_;
+                    ...
+                }
+
+                # In the main program
+                push @INC, Foo->new(...);
+
+            These hooks are also permitted to set the %INC entry
+            corresponding to the files they have loaded. See "%INC" in
+            perlvar.
+
+            For a yet-more-powerful import facility, see "use" and perlmod.
+

@@ -1,0 +1,157 @@
+    -X FILEHANDLE
+    -X EXPR
+    -X DIRHANDLE
+    -X      A file test, where X is one of the letters listed below. This
+            unary operator takes one argument, either a filename, a
+            filehandle, or a dirhandle, and tests the associated file to see
+            if something is true about it. If the argument is omitted, tests
+            $_, except for "-t", which tests STDIN. Unless otherwise
+            documented, it returns 1 for true and '' for false. If the file
+            doesn't exist or can't be examined, it returns "undef" and sets
+            $! (errno). Despite the funny names, precedence is the same as
+            any other named unary operator. The operator may be any of:
+
+                -r  File is readable by effective uid/gid.
+                -w  File is writable by effective uid/gid.
+                -x  File is executable by effective uid/gid.
+                -o  File is owned by effective uid.
+
+                -R  File is readable by real uid/gid.
+                -W  File is writable by real uid/gid.
+                -X  File is executable by real uid/gid.
+                -O  File is owned by real uid.
+
+                -e  File exists.
+                -z  File has zero size (is empty).
+                -s  File has nonzero size (returns size in bytes).
+
+                -f  File is a plain file.
+                -d  File is a directory.
+                -l  File is a symbolic link (false if symlinks aren't
+                    supported by the file system).
+                -p  File is a named pipe (FIFO), or Filehandle is a pipe.
+                -S  File is a socket.
+                -b  File is a block special file.
+                -c  File is a character special file.
+                -t  Filehandle is opened to a tty.
+
+                -u  File has setuid bit set.
+                -g  File has setgid bit set.
+                -k  File has sticky bit set.
+
+                -T  File is an ASCII or UTF-8 text file (heuristic guess).
+                -B  File is a "binary" file (opposite of -T).
+
+                -M  Script start time minus file modification time, in days.
+                -A  Same for access time.
+                -C  Same for inode change time (Unix, may differ for other
+                    platforms)
+
+            Example:
+
+                while (<>) {
+                    chomp;
+                    next unless -f $_;  # ignore specials
+                    #...
+                }
+
+            Note that "-s/a/b/" does not do a negated substitution. Saying
+            "-exp($foo)" still works as expected, however: only single
+            letters following a minus are interpreted as file tests.
+
+            These operators are exempt from the "looks like a function rule"
+            described above. That is, an opening parenthesis after the
+            operator does not affect how much of the following code
+            constitutes the argument. Put the opening parentheses before the
+            operator to separate it from code that follows (this applies
+            only to operators with higher precedence than unary operators,
+            of course):
+
+                -s($file) + 1024   # probably wrong; same as -s($file + 1024)
+                (-s $file) + 1024  # correct
+
+            The interpretation of the file permission operators "-r", "-R",
+            "-w", "-W", "-x", and "-X" is by default based solely on the
+            mode of the file and the uids and gids of the user. There may be
+            other reasons you can't actually read, write, or execute the
+            file: for example network filesystem access controls, ACLs
+            (access control lists), read-only filesystems, and unrecognized
+            executable formats. Note that the use of these six specific
+            operators to verify if some operation is possible is usually a
+            mistake, because it may be open to race conditions.
+
+            Also note that, for the superuser on the local filesystems, the
+            "-r", "-R", "-w", and "-W" tests always return 1, and "-x" and
+            "-X" return 1 if any execute bit is set in the mode. Scripts run
+            by the superuser may thus need to do a stat() to determine the
+            actual mode of the file, or temporarily set their effective uid
+            to something else.
+
+            If you are using ACLs, there is a pragma called "filetest" that
+            may produce more accurate results than the bare stat() mode
+            bits. When under "use filetest 'access'" the above-mentioned
+            filetests test whether the permission can(not) be granted using
+            the access(2) family of system calls. Also note that the "-x"
+            and "-X" may under this pragma return true even if there are no
+            execute permission bits set (nor any extra execute permission
+            ACLs). This strangeness is due to the underlying system calls'
+            definitions. Note also that, due to the implementation of "use
+            filetest 'access'", the "_" special filehandle won't cache the
+            results of the file tests when this pragma is in effect. Read
+            the documentation for the "filetest" pragma for more
+            information.
+
+            The "-T" and "-B" switches work as follows. The first block or
+            so of the file is examined to see if it is valid UTF-8 that
+            includes non-ASCII characters. If, so it's a "-T" file.
+            Otherwise, that same portion of the file is examined for odd
+            characters such as strange control codes or characters with the
+            high bit set. If more than a third of the characters are
+            strange, it's a "-B" file; otherwise it's a "-T" file. Also, any
+            file containing a zero byte in the examined portion is
+            considered a binary file. (If executed within the scope of a
+            use locale which includes "LC_CTYPE", odd characters are
+            anything that isn't a printable nor space in the current
+            locale.) If "-T" or "-B" is used on a filehandle, the current IO
+            buffer is examined rather than the first block. Both "-T" and
+            "-B" return true on an empty file, or a file at EOF when testing
+            a filehandle. Because you have to read a file to do the "-T"
+            test, on most occasions you want to use a "-f" against the file
+            first, as in "next unless -f $file && -T $file".
+
+            If any of the file tests (or either the "stat" or "lstat"
+            operator) is given the special filehandle consisting of a
+            solitary underline, then the stat structure of the previous file
+            test (or stat operator) is used, saving a system call. (This
+            doesn't work with "-t", and you need to remember that lstat()
+            and "-l" leave values in the stat structure for the symbolic
+            link, not the real file.) (Also, if the stat buffer was filled
+            by an "lstat" call, "-T" and "-B" will reset it with the results
+            of "stat _"). Example:
+
+                print "Can do.\n" if -r $a || -w _ || -x _;
+
+                stat($filename);
+                print "Readable\n" if -r _;
+                print "Writable\n" if -w _;
+                print "Executable\n" if -x _;
+                print "Setuid\n" if -u _;
+                print "Setgid\n" if -g _;
+                print "Sticky\n" if -k _;
+                print "Text\n" if -T _;
+                print "Binary\n" if -B _;
+
+            As of Perl 5.10.0, as a form of purely syntactic sugar, you can
+            stack file test operators, in a way that "-f -w -x $file" is
+            equivalent to "-x $file && -w _ && -f _". (This is only fancy
+            syntax: if you use the return value of "-f $file" as an argument
+            to another filetest operator, no special magic will happen.)
+
+            Portability issues: "-X" in perlport.
+
+            To avoid confusing would-be users of your code with mysterious
+            syntax errors, put something like this at the top of your
+            script:
+
+                use 5.010;  # so filetest ops can stack
+

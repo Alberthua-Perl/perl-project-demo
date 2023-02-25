@@ -1,0 +1,1084 @@
+NAME
+    Data::Printer - colored pretty-print of Perl data structures and objects
+
+SYNOPSIS
+    Want to see what's inside a variable in a complete, colored and
+    human-friendly way?
+
+      use Data::Printer;   # or just "use DDP" for short
+
+      p @array;            # no need to pass references
+
+    Code above might output something like this (with colors!):
+
+       [
+           [0] "a",
+           [1] "b",
+           [2] undef,
+           [3] "c",
+       ]
+
+    You can also inspect objects:
+
+        my $obj = SomeClass->new;
+
+        p($obj);
+
+    Which might give you something like:
+
+      \ SomeClass  {
+          Parents       Moose::Object
+          Linear @ISA   SomeClass, Moose::Object
+          public methods (3) : bar, foo, meta
+          private methods (0)
+          internals: {
+             _something => 42,
+          }
+      }
+
+    Data::Printer is fully customizable. If you want to change how things
+    are displayed, or even its standard behavior. Take a look at the
+    available customizations. Once you figure out your own preferences,
+    create a configuration file for yourself and Data::Printer will
+    automatically use it!
+
+    That's about it! Feel free to stop reading now and start dumping your
+    data structures! For more information, including feature set, how to
+    create filters, and general tips, just keep reading :)
+
+    Oh, if you are just experimenting and/or don't want to use a
+    configuration file, you can set all options during initialization,
+    including coloring, indentation and filters!
+
+      use Data::Printer {
+          color => {
+             'regex' => 'blue',
+             'hash'  => 'yellow',
+          },
+          filters => {
+             'DateTime' => sub { $_[0]->ymd },
+             'SCALAR'   => sub { "oh noes, I found a scalar! $_[0]" },
+          },
+      };
+
+    The first "{}" block is just syntax sugar, you can safely omit it if it
+    makes things easier to read:
+
+      use DDP colored => 1;
+
+      use Data::Printer  deparse => 1, sort_keys => 0;
+
+FEATURES
+    Here's what Data::Printer has to offer to Perl developers, out of the
+    box:
+
+    *   Very sane defaults (I hope!)
+
+    *   Highly customizable (in case you disagree with me :)
+
+    *   Colored output by default
+
+    *   Human-friendly output, with array index and custom separators
+
+    *   Full object dumps including methods, inheritance and internals
+
+    *   Exposes extra information such as tainted data and weak references
+
+    *   Ability to easily create filters for objects and regular structures
+
+    *   Ability to load settings from a ".dataprinter" file so you don't
+        have to write anything other than "use DDP;" in your code!
+
+RATIONALE
+    Data::Dumper is a fantastic tool, meant to stringify data structures in
+    a way they are suitable for being "eval"'ed back in.
+
+    The thing is, a lot of people keep using it (and similar ones, like
+    Data::Dump) to print data structures and objects on screen for
+    inspection and debugging, and while you can use those modules for that,
+    it doesn't mean you should.
+
+    This is where Data::Printer comes in. It is meant to do one thing and
+    one thing only:
+
+    *display Perl variables and objects on screen, properly formatted* (to
+    be inspected by a human)
+
+    If you want to serialize/store/restore Perl data structures, this module
+    will NOT help you. Try Storable, Data::Dumper, JSON, or whatever. CPAN
+    is full of such solutions!
+
+THE p() FUNCTION
+    Once you load Data::Printer, the "p()" function will be imported into
+    your namespace and available to you. It will pretty-print into STDERR
+    (or any other output target) whatever variable you pass to it.
+
+  Changing output targets
+    By default, "p()" will be set to use STDERR. As of version 0.27, you can
+    set up the 'output' property so Data::Printer outputs to several
+    different places:
+
+    *   "output => 'stderr'" - Standard error. Same as *STDERR
+
+    *   "output => 'stdout'" - Standard output. Same as *STDOUT
+
+    *   "output => $filename" - Appends to filename.
+
+    *   "output => $file_handle" - Appends to opened handle
+
+    *   "output => \$scalar" - Appends to that variable's content
+
+  Return Value
+    As of version 0.36, Data::Printer's return value defaults to
+    "pass-through", meaning it will dump the variable to STDERR (or wherever
+    you set the output to) and will return the variable itself.
+
+    If for whatever reason you want to mangle with the output string instead
+    of printing it, you can either use the (also exported) "np()" function
+    which always returns the string to be printed:
+
+        use DDP;
+
+        # move to a string
+        my $string = np @some_array;
+
+        # send as a warning
+        warn np($some_string);
+
+        # output to STDOUT instead of STDERR
+        print np(%some_hash);
+
+    or change the return value to 'dump' and ask for p()'s return value
+    instead: value:
+
+      use DDP return_value => 'dump';
+
+      # move to a string
+      my $string = p @some_array;
+
+      # output to STDOUT instead of STDERR;
+      print p(%some_hash);
+
+    Note that, in this case, Data::Printer will not colorize the returned
+    string unless you explicitly set the "colored" option to 1:
+
+      print p(%some_hash, colored => 1); # now with colors!
+
+    You can - and should - of course, set this during you ""use"" call:
+
+      use Data::Printer colored => 1;
+      print p( %some_hash );  # will be colored
+
+    Or by adding the setting to your ".dataprinter" file.
+
+    As most of Data::Printer, the return value is also configurable. You do
+    this by setting the "return_value" option. There are three options
+    available:
+
+    *   'dump'
+
+            p %var;               # prints the dump to STDERR (void context)
+            my $string = p %var;  # returns the dump *without* printing
+
+    *   'void':
+
+            p %var;               # prints the dump to STDERR, never returns.
+            my $string = p %var;  # $string is undef. Data still printed in STDERR
+
+    *   'pass' (default as of 0.36):
+
+            p %var;               # prints the dump to STDERR, returns %var
+            my %copy = p %var;    # %copy = %var. Data still printed in STDERR
+
+COLORS AND COLORIZATION
+    Below are all the available colorizations and their default values. Note
+    that both spellings ('color' and 'colour') will work.
+
+       use Data::Printer {
+         color => {
+            array       => 'bright_white',  # array index numbers
+            number      => 'bright_blue',   # numbers
+            string      => 'bright_yellow', # strings
+            class       => 'bright_green',  # class names
+            method      => 'bright_green',  # method names
+            undef       => 'bright_red',    # the 'undef' value
+            hash        => 'magenta',       # hash keys
+            regex       => 'yellow',        # regular expressions
+            code        => 'green',         # code references
+            glob        => 'bright_cyan',   # globs (usually file handles)
+            vstring     => 'bright_blue',   # version strings (v5.16.0, etc)
+            repeated    => 'white on_red',  # references to seen values
+            caller_info => 'bright_cyan',   # details on what's being printed
+            weak        => 'cyan',          # weak references
+            tainted     => 'red',           # tainted content
+            escaped     => 'bright_red',    # escaped characters (\t, \n, etc)
+
+            # potential new Perl datatypes, unknown to Data::Printer
+            unknown     => 'bright_yellow on_blue',
+         },
+       };
+
+    Don't fancy colors? Disable them with:
+
+      use Data::Printer colored => 0;
+
+    By default, 'colored' is set to "auto", which means Data::Printer will
+    colorize only when not being used to return the dump string, nor when
+    the output (default: STDERR) is being piped. If you're not seeing
+    colors, try forcing it with:
+
+      use Data::Printer colored => 1;
+
+    Also worth noticing that Data::Printer *will* honor the
+    "ANSI_COLORS_DISABLED" environment variable unless you force a colored
+    output by setting 'colored' to 1.
+
+    Remember to put your preferred settings in the ".dataprinter" file so
+    you never have to type them at all!
+
+ALIASING
+    Data::Printer provides the nice, short, "p()" function to dump your data
+    structures and objects. In case you rather use a more explicit name,
+    already have a "p()" function (why?) in your code and want to avoid
+    clashing, or are just used to other function names for that purpose, you
+    can easily rename it:
+
+      use Data::Printer alias => 'Dumper';
+
+      Dumper( %foo );
+
+CUSTOMIZATION
+    I tried to provide sane defaults for Data::Printer, so you'll never have
+    to worry about anything other than typing "p( $var )" in your code. That
+    said, and besides coloring and filtering, there are several other
+    customization options available, as shown below (with default values):
+
+      use Data::Printer {
+          name           => 'var',   # name to display on cyclic references
+          indent         => 4,       # how many spaces in each indent
+          hash_separator => '   ',   # what separates keys from values
+          align_hash     => 1,       # align values in hash
+          colored        => 'auto',  # colorize output (1 for always, 0 for never)
+          index          => 1,       # display array indices
+          multiline      => 1,       # display in multiple lines (see note below)
+          max_depth      => 0,       # how deep to traverse the data (0 for all)
+          sort_keys      => 1,       # sort hash keys
+          deparse        => 0,       # use B::Deparse to expand (expose) subroutines
+          show_tied      => 1,       # expose tied variables
+          show_tainted   => 1,       # expose tainted variables
+          show_unicode   => 0,       # show unicode flag if it exists
+          show_weak      => 1,       # expose weak references
+          show_readonly  => 0,       # expose scalar variables marked as read-only
+          show_lvalue    => 1,       # expose lvalue types
+          print_escapes  => 0,       # print non-printable chars as "\n", "\t", etc.
+          escape_chars   => 'none',  # escape chars into \x{...} form.  Values are
+                                     # "none", "nonascii", "nonlatin1", "all"
+          quote_keys     => 'auto',  # quote hash keys (1 for always, 0 for never).
+                                     # 'auto' will quote when key is empty/space-only.
+          scalar_quotes  => '"',     # the quote symbols to enclose scalar values
+          separator      => ',',     # uses ',' to separate array/hash elements
+          end_separator  => 0,       # prints the separator after last element in array/hash.
+                                     # the default is 0 that means not to print
+
+          caller_info    => 0,       # include information on what's being printed
+          use_prototypes => 1,       # allow p(%foo), but prevent anonymous data
+          return_value   => 'dump',  # what should p() return? See 'Return Value' above.
+          output         => 'stderr',# where to print the output. See
+                                     # 'Changing output targets' above.
+
+          class_method   => '_data_printer', # make classes aware of Data::Printer
+                                             # and able to dump themselves.
+
+          class => {
+              internals  => 1,       # show internal data structures of classes
+
+              inherited  => 'none',  # show inherited methods,
+                                     # can also be 'all', 'private', or 'public'.
+
+              universal  => 1,       # include UNIVERSAL methods in inheritance list
+
+              parents    => 1,       # show parents, if there are any
+              linear_isa => 'auto',  # show the entire @ISA, linearized, whenever
+                                     # the object has more than one parent. Can
+                                     # also be set to 1 (always show) or 0 (never).
+
+              expand     => 1,       # how deep to traverse the object (in case
+                                     # it contains other objects). Defaults to
+                                     # 1, meaning expand only itself. Can be any
+                                     # number, 0 for no class expansion, and 'all'
+                                     # to expand everything.
+
+              sort_methods => 1,     # sort public and private methods
+
+              show_methods => 'all'  # method list. Also 'none', 'public', 'private'
+          },
+      };
+
+    Note: setting "multiline" to 0 will also set "index" and "indent" to 0.
+
+FILTERS
+    Data::Printer offers you the ability to use filters to override any kind
+    of data display. The filters are placed on a hash, where keys are the
+    types - or class names - and values are anonymous subs that receive two
+    arguments: the item itself as first parameter, and the properties
+    hashref (in case your filter wants to read from it). This lets you
+    quickly override the way Data::Printer handles and displays data types
+    and, in particular, objects.
+
+      use Data::Printer filters => {
+                'DateTime'      => sub { $_[0]->ymd },
+                'HTTP::Request' => sub { $_[0]->uri },
+      };
+
+    Perl types are named as "ref" calls them: *SCALAR*, *ARRAY*, *HASH*,
+    *REF*, *CODE*, *Regexp* and *GLOB*. As for objects, just use the class'
+    name, as shown above.
+
+    As of version 0.13, you may also use the '-class' filter, which will be
+    called for all non-perl types (objects).
+
+    Your filters are supposed to return a defined value (usually, the string
+    you want to print). If you don't, Data::Printer will let the next filter
+    of that same type have a go, or just fallback to the defaults. You can
+    also use an array reference to pass more than one filter for the same
+    type or class.
+
+    Note: If you plan on calling "p()" from *within* an inline filter,
+    please make sure you are passing only REFERENCES as arguments. See
+    "CAVEATS" below.
+
+    You may also like to specify standalone filter modules. Please see
+    Data::Printer::Filter for further information on a more powerful filter
+    interface for Data::Printer, including useful filters that are shipped
+    as part of this distribution.
+
+MAKING YOUR CLASSES DDP-AWARE (WITHOUT ADDING ANY DEPS)
+    Whenever printing the contents of a class, Data::Printer first checks to
+    see if that class implements a sub called '_data_printer' (or whatever
+    you set the "class_method" option to in your settings, see
+    "CUSTOMIZATION" below).
+
+    If a sub with that exact name is available in the target object,
+    Data::Printer will use it to get the string to print instead of making a
+    regular class dump.
+
+    This means you could have the following in one of your classes:
+
+      sub _data_printer {
+          my ($self, $properties) = @_;
+          return 'Hey, no peeking! But foo contains ' . $self->foo;
+      }
+
+    Notice you don't have to depend on Data::Printer at all, just write your
+    sub and it will use that to pretty-print your objects.
+
+    If you want to use colors and filter helpers, and still not add
+    Data::Printer to your dependencies, remember you can import them during
+    runtime:
+
+      sub _data_printer {
+          require Data::Printer::Filter;
+          Data::Printer::Filter->import;
+
+          # now we have 'indent', outdent', 'linebreak', 'p' and 'colored'
+          my ($self, $properties) = @_;
+          ...
+      }
+
+    Having a filter for that particular class will of course override this
+    setting.
+
+CONFIGURATION FILE (RUN CONTROL)
+    Data::Printer tries to let you easily customize as much as possible
+    regarding the visualization of your data structures and objects. But we
+    don't want you to keep repeating yourself every time you want to use it!
+
+    To avoid this, you can simply create a file called ".dataprinter" in
+    your home directory (usually "/home/username" in Linux), and put your
+    configuration hash reference in there.
+
+    This way, instead of doing something like:
+
+       use Data::Printer {
+         colour => {
+            array => 'bright_blue',
+         },
+         filters => {
+             'Catalyst::Request' => sub {
+                 my $req = shift;
+                 return "Cookies: " . p($req->cookies)
+             },
+         },
+       };
+
+    You can create a .dataprinter file that looks like this:
+
+       {
+         colour => {
+            array => 'bright_blue',
+         },
+         filters => {
+             'Catalyst::Request' => sub {
+                 my $req = shift;
+                 return "Cookies: " . p($req->cookies)
+             },
+         },
+       };
+
+    Note that all we did was remove the "use Data::Printer" bit when writing
+    the ".dataprinter" file. From then on all you have to do while debugging
+    scripts is:
+
+      use Data::Printer;
+
+    and it will load your custom settings every time :)
+
+  Loading RC files in custom locations
+    If your RC file is somewhere other than ".dataprinter" in your home dir,
+    you can load whichever file you want via the 'rc_file' parameter:
+
+      use Data::Printer rc_file => '/path/to/my/rcfile.conf';
+
+    You can even set this to undef or to a non-existing file to disable your
+    RC file at will.
+
+    The RC file location can also be specified with the "DATAPRINTERRC"
+    environment variable. Using "rc_file" in code will override the
+    environment variable.
+
+  RC File Security
+    The ".dataprinter" RC file is nothing but a Perl hash that gets "eval"'d
+    back into the code. This means that whatever is in your RC file WILL BE
+    INTERPRETED BY PERL AT RUNTIME. This can be quite worrying if you're not
+    the one in control of the RC file.
+
+    For this reason, Data::Printer takes extra precaution before loading the
+    file:
+
+    *   The file has to be in your home directory unless you specifically
+        point elsewhere via the '"rc_file"' property or the DATAPRINTERRC
+        environment variable;
+
+    *   The file must be a plain file, never a symbolic link, named pipe or
+        socket;
+
+    *   The file must be owned by you (i.e. the effective user id that ran
+        the script using Data::Printer);
+
+    *   The file must be read-only for everyone but your user. This usually
+        means permissions 0644, 0640 or 0600 in Unix-like systems. THIS IS
+        NOT CHECKED IN WIN32;
+
+    *   The file will NOT be loaded in Taint mode, unless you specifically
+        load Data::Printer with the 'allow_tainted' option set to true. And
+        even if you do that, Data::Printer will still issue a warning before
+        loading the file. But seriously, don't do that.
+
+    Failure to comply with the security rules above will result in the RC
+    file not being loaded (likely with a warning on what went wrong).
+
+THE "DDP" PACKAGE ALIAS
+    You're likely to add/remove Data::Printer from source code being
+    developed and debugged all the time, and typing it might feel too long.
+    Because of this, the 'DDP' package is provided as a shorter alias to
+    Data::Printer:
+
+       use DDP;
+       p %some_var;
+
+CALLER INFORMATION
+    If you set caller_info to a true value, Data::Printer will prepend every
+    call with an informational message. For example:
+
+      use Data::Printer caller_info => 1;
+
+      my $var = 42;
+      p $var;
+
+    will output something like:
+
+      Printing in line 4 of myapp.pl:
+      42
+
+    The default message is 'Printing in line __LINE__ of __FILENAME__:'. The
+    special strings "__LINE__", "__FILENAME__" and "__PACKAGE__" will be
+    interpolated into their according value so you can customize them at
+    will:
+
+      use Data::Printer
+        caller_info => 1,
+        caller_message => "Okay, __PACKAGE__, let's dance!"
+        color => {
+            caller_info => 'bright_red',
+        };
+
+    As shown above, you may also set a color for "caller_info" in your color
+    hash. Default is cyan.
+
+EXPERIMENTAL FEATURES
+    The following are volatile parts of the API which are subject to change
+    at any given version. Use them at your own risk.
+
+  Local Configuration (experimental!)
+    You can override global configurations by writing them as the second
+    parameter for p(). For example:
+
+      p( %var, color => { hash => 'green' } );
+
+  Filter classes
+    As of Data::Printer 0.11, you can create complex filters as a separate
+    module. Those can even be uploaded to CPAN and used by other people! See
+    Data::Printer::Filter for further information.
+
+CAVEATS
+    You can't pass more than one variable at a time.
+
+       p($foo, $bar); # wrong
+       p($foo);       # right
+       p($bar);       # right
+
+    You can't use it in variable declarations (it will most likely not do
+    what you want):
+
+        p my @array = qw(a b c d);         # wrong
+        my @array = qw(a b c d); p @array; # right
+
+    The default mode is to use prototypes, in which you are supposed to pass
+    variables, not anonymous structures:
+
+       p( { foo => 'bar' } ); # wrong
+
+       p %somehash;        # right
+       p $hash_ref;        # also right
+
+    To pass anonymous structures, set "use_prototypes" option to 0. But
+    remember you'll have to pass your variables as references:
+
+       use Data::Printer use_prototypes => 0;
+
+       p( { foo => 'bar' } ); # was wrong, now is right.
+
+       p( %foo  ); # was right, but fails without prototypes
+       p( \%foo ); # do this instead
+
+    If you are using inline filters, and calling p() (or whatever name you
+    aliased it to) from inside those filters, you must pass the arguments to
+    "p()" as a reference:
+
+      use Data::Printer {
+          filters => {
+              ARRAY => sub {
+                  my $listref = shift;
+                  my $string = '';
+                  foreach my $item (@$listref) {
+                      $string .= p( \$item );      # p( $item ) will not work!
+                  }
+                  return $string;
+              },
+          },
+      };
+
+    This happens because your filter function is compiled *before*
+    Data::Printer itself loads, so the filter does not see the function
+    prototype. As a way to avoid unpleasant surprises, if you forget to pass
+    a reference, Data::Printer will generate an exception for you with the
+    following message:
+
+        'When calling p() without prototypes, please pass arguments as references'
+
+    Another way to avoid this is to use the much more complete
+    Data::Printer::Filter interface for standalone filters.
+
+EXTRA TIPS
+  Circumventing prototypes
+    The "p()" function uses prototypes by default, allowing you to say:
+
+      p %var;
+
+    instead of always having to pass references, like:
+
+      p \%var;
+
+    There are cases, however, where you may want to pass anonymous
+    structures, like:
+
+      p { foo => $bar };   # this blows up, don't use
+
+    and because of prototypes, you can't. If this is your case, just set
+    "use_prototypes" option to 0. Note, with this option, you will have to
+    pass your variables as references:
+
+      use Data::Printer use_prototypes => 0;
+
+       p { foo => 'bar' }; # doesn't blow up anymore, works just fine.
+
+       p %var;  # but now this blows up...
+       p \%var; # ...so do this instead
+
+       p [ $foo, $bar, \@baz ]; # this way you can even pass
+                                # several variables at once
+
+    Versions prior to 0.17 don't have the "use_prototypes" option. If you're
+    stuck in an older version you can write "&p()" instead of "p()" to
+    circumvent prototypes and pass elements (including anonymous variables)
+    as REFERENCES. This notation, however, requires enclosing parentheses:
+
+      &p( { foo => $bar } );        # this is ok, use at will
+      &p( \"DEBUGGING THIS BIT" );  # this works too
+
+    Or you could just create a very simple wrapper function:
+
+      sub pp { p @_ };
+
+    And use it just as you use "p()".
+
+  Minding the return value of p()
+    *(contributed by Matt S. Trout (mst))*
+
+    There is a reason why explicit return statements are recommended unless
+    you know what you're doing. By default, Data::Printer's return value
+    depends on how it was called. When not in void context, it returns the
+    serialized form of the dump.
+
+    It's tempting to trust your own p() calls with that approach, but if
+    this is your *last* statement in a function, you should keep in mind
+    your debugging code will behave differently depending on how your
+    function was called!
+
+    To prevent that, set the "return_value" property to either 'void' or
+    'pass'. You won't be able to retrieve the dumped string but, hey, who
+    does that anyway :)
+
+    Assuming you have set the pass-through ('pass') property in your
+    ".dataprinter" file, another stunningly useful thing you can do with it
+    is change code that says:
+
+       return $obj->foo;
+
+    with:
+
+       use DDP;
+
+       return p $obj->foo;
+
+    You can even add it to chained calls if you wish to see the dump of a
+    particular state, changing this:
+
+       $obj->foo->bar->baz;
+
+    to:
+
+       $obj->foo->DDP::p->bar->baz
+
+    And things will "Just Work".
+
+  Using p() in some/all of your loaded modules
+    *(contributed by Matt S. Trout (mst))*
+
+    While debugging your software, you may want to use Data::Printer in some
+    or all loaded modules and not bother having to load it in each and every
+    one of them. To do this, in any module loaded by "myapp.pl", simply
+    write:
+
+      ::p( @myvar );  # note the '::' in front of p()
+
+    Then call your program like:
+
+      perl -MDDP myapp.pl
+
+    This also has the great advantage that if you leave one p() call in by
+    accident, it will fail without the -M, making it easier to spot :)
+
+    If you really want to have p() imported into your loaded modules, use
+    the next tip instead.
+
+  Adding p() to all your loaded modules
+    *(contributed by Árpád Szász)*
+
+    If you wish to automatically add Data::Printer's "p()" function to every
+    loaded module in you app, you can do something like this to your main
+    program:
+
+        BEGIN {
+            {
+                no strict 'refs';
+                require Data::Printer;
+                my $alias = 'p';
+                foreach my $package ( keys %main:: ) {
+                    if ( $package =~ m/::$/ ) {
+                        *{ $package . $alias } = \&Data::Printer::p;
+                    }
+                }
+            }
+        }
+
+    WARNING This will override all locally defined subroutines/methods that
+    are named "p", if they exist, in every loaded module. If you already
+    have a subroutine named '"p()"', be sure to change $alias to something
+    custom.
+
+    If you rather avoid namespace manipulation altogether, use the previous
+    tip instead.
+
+  Using Data::Printer from the Perl debugger
+    *(contributed by Árpád Szász and Marcel Grünauer (hanekomu))*
+
+    With DB::Pluggable, you can easily set the perl debugger to use
+    Data::Printer to print variable information, replacing the debugger's
+    standard "p()" function. All you have to do is add these lines to your
+    ".perldb" file:
+
+      use DB::Pluggable;
+      DB::Pluggable->run_with_config( \'[DataPrinter]' );  # note the '\'
+
+    Then call the perl debugger as you normally would:
+
+      perl -d myapp.pl
+
+    Now Data::Printer's "p()" command will be used instead of the
+    debugger's!
+
+    See perldebug for more information on how to use the perl debugger, and
+    DB::Pluggable for extra functionality and other plugins.
+
+    If you can't or don't wish to use DB::Pluggable, or simply want to keep
+    the debugger's "p()" function and add an extended version using
+    Data::Printer (let's call it "px()" for instance), you can add these
+    lines to your ".perldb" file instead:
+
+        $DB::alias{px} = 's/px/DB::px/';
+        sub px {
+            my $expr = shift;
+            require Data::Printer;
+            print Data::Printer::p($expr);
+        }
+
+    Now, inside the Perl debugger, you can pass as reference to "px"
+    expressions to be dumped using Data::Printer.
+
+  Using Data::Printer in a perl shell (REPL)
+    Some people really enjoy using a REPL shell to quickly try Perl code.
+    One of the most famous ones out there is Devel::REPL. If you use it, now
+    you can also see its output with Data::Printer!
+
+    Just install Devel::REPL::Plugin::DataPrinter and add the following line
+    to your re.pl configuration file (usually ".re.pl/repl.rc" in your home
+    dir):
+
+      load_plugin('DataPrinter');
+
+    The next time you run "re.pl", it should dump all your REPL using
+    Data::Printer!
+
+  Easily rendering Data::Printer's output as HTML
+    To turn Data::Printer's output into HTML, you can do something like:
+
+      use HTML::FromANSI;
+      use Data::Printer;
+
+      my $html_output = ansi2html( p($object, colored => 1) );
+
+    In the example above, the $html_output variable contains the HTML
+    escaped output of "p($object)", so you can print it for later inspection
+    or render it (if it's a web app).
+
+  Using Data::Printer with Template Toolkit
+    *(contributed by Stephen Thirlwall (sdt))*
+
+    If you use Template Toolkit and want to dump your variables using
+    Data::Printer, install the Template::Plugin::DataPrinter module and load
+    it in your template:
+
+       [% USE DataPrinter %]
+
+    The provided methods match those of "Template::Plugin::Dumper":
+
+       ansi-colored dump of the data structure in "myvar":
+       [% DataPrinter.dump( myvar ) %]
+
+       html-formatted, colored dump of the same data structure:
+       [% DataPrinter.dump_html( myvar ) %]
+
+    The module allows several customization options, even letting you load
+    it as a complete drop-in replacement for Template::Plugin::Dumper so you
+    don't even have to change your previous templates!
+
+  Unified interface for Data::Printer and other debug formatters
+    *(contributed by Kevin McGrath (catlgrep))*
+
+    If you are porting your code to use Data::Printer instead of
+    Data::Dumper or similar, you can just replace:
+
+      use Data::Dumper;
+
+    with:
+
+      use Data::Printer alias => 'Dumper';
+      # use Data::Dumper;
+
+    making sure to provide Data::Printer with the proper alias for the
+    previous dumping function.
+
+    If, however, you want a really unified approach where you can easily
+    flip between debugging outputs, use Any::Renderer and its plugins, like
+    Any::Renderer::Data::Printer.
+
+  Printing stack traces with arguments expanded using Data::Printer
+    *(contributed by Sergey Aleynikov (randir))*
+
+    There are times where viewing the current state of a variable is not
+    enough, and you want/need to see a full stack trace of a function call.
+
+    The Devel::PrettyTrace module uses Data::Printer to provide you just
+    that. It exports a "bt()" function that pretty-prints detailed
+    information on each function in your stack, making it easier to spot any
+    issues!
+
+  Troubleshooting apps in real time without changing a single line of your code
+    *(contributed by Marcel Grünauer (hanekomu))*
+
+    dip is a dynamic instrumentation framework for troubleshooting Perl
+    programs, similar to DTrace
+    <http://opensolaris.org/os/community/dtrace/>. In a nutshell, "dip" lets
+    you create probes for certain conditions in your application that, once
+    met, will perform a specific action. Since it uses Aspect-oriented
+    programming, it's very lightweight and you only pay for what you use.
+
+    "dip" can be very useful since it allows you to debug your software
+    without changing a single line of your original code. And Data::Printer
+    comes bundled with it, so you can use the "p()" function to view your
+    data structures too!
+
+       # Print a stack trace every time the name is changed,
+       # except when reading from the database.
+       dip -e 'before { print longmess(p $_->{args}[1]) if $_->{args}[1] }
+         call "MyObj::name" & !cflow("MyObj::read")' myapp.pl
+
+    You can check you dip's own documentation for more information and
+    options.
+
+  Sample output for color fine-tuning
+    *(contributed by Yanick Champoux (yanick))*
+
+    The "examples/try_me.pl" file included in this distribution has a sample
+    dump with a complex data structure to let you quickly test color
+    schemes.
+
+  creating fiddling filters
+    *(contributed by dirk)*
+
+    Sometimes, you may want to take advantage of Data::Printer's original
+    dump, but add/change some of the original data to enhance your debugging
+    ability. Say, for example, you have an "HTTP::Response" object you want
+    to print but the content is encoded. The basic approach, of course,
+    would be to just dump the decoded content:
+
+      use DDP filter {
+        'HTTP::Response' => sub { p( \shift->decoded_content, %{shift} );
+      };
+
+    But what if you want to see the rest of the original object? Dumping it
+    would be a no-go, because you would just recurse forever in your own
+    filter.
+
+    Never fear! When you create a filter in Data::Printer, you're not
+    replacing the original one, you're just stacking yours on top of it. To
+    forward your data to the original filter, all you have to do is return
+    an undefined value. This means you can rewrite your "HTTP::Response"
+    filter like so, if you want:
+
+      use DDP filters => {
+        'HTTP::Response' => sub {
+          my ($res, $p) = @_;
+
+          # been here before? Switch to original handler
+          return if exists $res->{decoded_content};
+
+          # first timer? Come on in!
+          my $clone = $res->clone;
+          $clone->{decoded_content} = $clone->decoded_content;
+          return p($clone, %$p);
+        }
+      };
+
+    And voilà! Your fiddling filter now works like a charm :)
+
+BUGS
+    If you find any, please file a bug report.
+
+SEE ALSO
+    Data::Dumper
+
+    Data::Dump
+
+    Data::Dumper::Concise
+
+    Data::Dump::Streamer
+
+    Data::PrettyPrintObjects
+
+    Data::TreeDumper
+
+AUTHOR
+    Breno G. de Oliveira "<garu at cpan.org>"
+
+CONTRIBUTORS
+    Many thanks to everyone that helped design and develop this module with
+    patches, bug reports, wishlists, comments and tests. They are
+    (alphabetically):
+
+    *   Adam Rosenstein
+
+    *   Allan Whiteford
+
+    *   Andreas König
+
+    *   Andy Bach
+
+    *   Árpád Szász
+
+    *   Athanasios Douitsis (aduitsis)
+
+    *   Baldur Kristinsson
+
+    *   brian d foy
+
+    *   Chad Granum (exodist)
+
+    *   Chris Prather (perigrin)
+
+    *   David D Lowe (Flimm)
+
+    *   David Golden (xdg)
+
+    *   David Precious (bigpresh)
+
+    *   David Raab
+
+    *   Damien Krotkine (dams)
+
+    *   Denis Howe
+
+    *   Dotan Dimet
+
+    *   Eden Cardim (edenc)
+
+    *   Elliot Shank (elliotjs)
+
+    *   Fernando Corrêa (SmokeMachine)
+
+    *   Fitz Elliott
+
+    *   Frew Schmidt (frew)
+
+    *   Ivan Bessarabov (bessarabv)
+
+    *   J Mash
+
+    *   Jay Allen (jayallen)
+
+    *   Jesse Luehrs (doy)
+
+    *   Joel Berger (jberger)
+
+    *   John S. Anderson (genehack)
+
+    *   Kartik Thakore (kthakore)
+
+    *   Kevin Dawson (bowtie)
+
+    *   Kevin McGrath (catlgrep)
+
+    *   Kip Hampton (ubu)
+
+    *   Marcel Grünauer (hanekomu)
+
+    *   Marco Masetti (grubert65)
+
+    *   Mark Fowler (Trelane)
+
+    *   Matt S. Trout (mst)
+
+    *   Maxim Vuets
+
+    *   Michael Conrad
+
+    *   Mike Doherty (doherty)
+
+    *   Nuba Princigalli (nuba)
+
+    *   Olaf Alders (oalders)
+
+    *   Paul Evans (LeoNerd)
+
+    *   Pedro Melo (melo)
+
+    *   Przemysław Wesołek (jest)
+
+    *   Rebecca Turner (iarna)
+
+    *   Renato Cron (renatoCRON)
+
+    *   Ricardo Signes (rjbs)
+
+    *   Rob Hoelz (hoelzro)
+
+    *   sawyer
+
+    *   Sebastian Willing (Sewi)
+
+    *   Sergey Aleynikov (randir)
+
+    *   Stanislaw Pusep (syp)
+
+    *   Stephen Thirlwall (sdt)
+
+    *   sugyan
+
+    *   Tatsuhiko Miyagawa (miyagawa)
+
+    *   Thomas Sibley (tsibley)
+
+    *   Tim Heaney (oylenshpeegul)
+
+    *   Torsten Raudssus (Getty)
+
+    *   Tokuhiro Matsuno (tokuhirom)
+
+    *   vividsnow
+
+    *   Wesley Dal`Col (blabos)
+
+    *   Yanick Champoux (yanick)
+
+    If I missed your name, please drop me a line!
+
+LICENSE AND COPYRIGHT
+    Copyright 2011 Breno G. de Oliveira "<garu at cpan.org>". All rights
+    reserved.
+
+    This module is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself. See perlartistic.
+
+DISCLAIMER OF WARRANTY
+    BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+    FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
+    OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
+    PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+    EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
+    ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
+    YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
+    NECESSARY SERVICING, REPAIR, OR CORRECTION.
+
+    IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+    WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+    REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE LIABLE
+    TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL, OR
+    CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
+    SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+    RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
+    FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
+    SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+    DAMAGES.
+

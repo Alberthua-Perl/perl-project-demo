@@ -1,0 +1,30 @@
+    sysread FILEHANDLE,SCALAR,LENGTH,OFFSET
+    sysread FILEHANDLE,SCALAR,LENGTH
+            Attempts to read LENGTH bytes of data into variable SCALAR from
+            the specified FILEHANDLE, using read(2). It bypasses buffered
+            IO, so mixing this with other kinds of reads, "print", "write",
+            "seek", "tell", or "eof" can cause confusion because the perlio
+            or stdio layers usually buffer data. Returns the number of bytes
+            actually read, 0 at end of file, or undef if there was an error
+            (in the latter case $! is also set). SCALAR will be grown or
+            shrunk so that the last byte actually read is the last byte of
+            the scalar after the read.
+
+            An OFFSET may be specified to place the read data at some place
+            in the string other than the beginning. A negative OFFSET
+            specifies placement at that many characters counting backwards
+            from the end of the string. A positive OFFSET greater than the
+            length of SCALAR results in the string being padded to the
+            required size with "\0" bytes before the result of the read is
+            appended.
+
+            There is no syseof() function, which is ok, since "eof" doesn't
+            work well on device files (like ttys) anyway. Use "sysread" and
+            check for a return value for 0 to decide whether you're done.
+
+            Note that if the filehandle has been marked as ":utf8", Unicode
+            characters are read instead of bytes (the LENGTH, OFFSET, and
+            the return value of "sysread" are in Unicode characters). The
+            ":encoding(...)" layer implicitly introduces the ":utf8" layer.
+            See "binmode", "open", and the open pragma.
+

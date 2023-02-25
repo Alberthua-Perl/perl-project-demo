@@ -1,0 +1,1883 @@
+  Tue Mar 24 12:31:13 2015: "Module" URI
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.67"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:17 2015: "Module" LWP::MediaTypes
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.02"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:21 2015: "Module" IO::HTML
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.001"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:24 2015: "Module" HTTP::Date
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.02"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:28 2015: "Module" Encode::Locale
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.04"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:33 2015: "Module" HTTP::Message
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.06"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:37 2015: "Module" HTML::Tagset
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.20"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:45 2015: "Module" WWW::RobotRules
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.02"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:49 2015: "Module" Net::HTTP
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.07"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:31:52 2015: "Module" HTTP::Negotiate
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.01"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:32:00 2015: "Module" HTTP::Daemon
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.01"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:32:04 2015: "Module" HTTP::Cookies
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.01"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:32:14 2015: "Module" HTML::Parser
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.71"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:32:21 2015: "Module" File::Listing
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.04"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:32:25 2015: "Module" Win32::Job
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.05"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:32:46 2015: "Module" LWP
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.08"
+
+    *   "EXE_FILES: bin/lwp-request bin/lwp-mirror bin/lwp-download
+        bin/lwp-dump"
+
+  Tue Mar 24 12:32:57 2015: "Module" Archive::Zip
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.37"
+
+    *   "EXE_FILES: script/crc32"
+
+  Tue Mar 24 12:33:01 2015: "Module" Try::Tiny
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.22"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:34:56 2015: "Module" Capture::Tiny
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.28"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:35:16 2015: "Module" ActiveState::Utils
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.10"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:36:08 2015: "Module" Win32::ShellQuote
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.002002"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:36:11 2015: "Module" ExtUtils::Config
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.008"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:36:15 2015: "Module" Test::Requires
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.08"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:36:19 2015: "Module" Test::Fatal
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.014"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:36:48 2015: "Module" Test::Simple
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.001014"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:36:52 2015: "Module" Hook::LexWrap
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.24"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:36:56 2015: "Module" Exporter::Tiny
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.042"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:36:59 2015: "Module" Probe::Perl
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.03"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:37:05 2015: "Module" IPC::Run3
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.048"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:48:57 2015: "Module" Mozilla::CA
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 20141217"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:49:01 2015: "Module" Sub::Install
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.928"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:49:08 2015: "Module" Params::Util
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.07"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:49:12 2015: "Module" ExtUtils::InstallPaths
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.010"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:49:17 2015: "Module" ExtUtils::Helpers
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.022"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:49:23 2015: "Module" Package::Stash::XS
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.28"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:49:27 2015: "Module" Dist::CheckConflicts
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.11"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:49:32 2015: "Module" Module::Implementation
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.09"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:11 2015: "Module" Sub::Uplevel
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.25"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:15 2015: "Module" Test::NoWarnings
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.04"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:18 2015: "Module" Test::SubCalls
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.09"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:22 2015: "Module" Test::Object
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.07"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:29 2015: "Module" File::Remove
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.52"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:33 2015: "Module" Class::Inspector
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.28"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:37 2015: "Module" Task::Weaken
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.04"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:45 2015: "Module" List::MoreUtils
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.406"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:49 2015: "Module" IO::String
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.08"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:54 2015: "Module" Clone
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.38"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:51:59 2015: "Module" Devel::StackTrace
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.00"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:52:02 2015: "Module" Class::Data::Inheritable
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.08"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:52:07 2015: "Module" Test::Script
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.07"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:52:55 2015: "Module" Net::SSLeay
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.66"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:52:59 2015: "Module" Algorithm::C3
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.10"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:53:03 2015: "Module" Data::OptList
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.109"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:53:11 2015: "Module" Package::Stash
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.37"
+
+    *   "EXE_FILES: bin/package-stash-conflicts"
+
+  Tue Mar 24 12:53:23 2015: "Module" Algorithm::Diff
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.1903"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:53:27 2015: "Module" Test::Exception
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.38"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:53:43 2015: "Module" Test::Deep
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.115"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:54:17 2015: "Module" PPI
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.220"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:54:25 2015: "Module" Exception::Class
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.39"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:54:29 2015: "Module" File::Which
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.09"
+
+    *   "EXE_FILES: script/pwhich"
+
+  Tue Mar 24 12:55:16 2015: "Module" Win32API::Registry
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.30"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:55:20 2015: "Module" Win32::WinError
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.04"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:56:31 2015: "Module" IO::Socket::SSL
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.997"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:56:38 2015: "Module" Class::C3
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.27"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:56:44 2015: "Module" Sub::Exporter
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.987"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:56:50 2015: "Module" Class::Load
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.21"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:56:57 2015: "Module" GD
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.53"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:57:01 2015: "Module" Text::Diff
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.41"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:57:06 2015: "Module" Test::Without::Module
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.17"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:57:19 2015: "Module" JSON
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.90"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:57:22 2015: "Module" Carp::Clan
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.04"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:58:32 2015: "Module" DBI
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.633"
+
+    *   "EXE_FILES: dbiproxy dbiprof dbilogstrip"
+
+  Tue Mar 24 12:58:39 2015: "Module" Tcl
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.02"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:58:43 2015: "Module" PPIx::Utilities
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.001000"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:58:51 2015: "Module" PPIx::Regexp
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.037_01"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:59:04 2015: "Module" File::HomeDir
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.00"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:59:09 2015: "Module" Email::Address
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.907"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:59:13 2015: "Module" Config::Tiny
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.22"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:59:17 2015: "Module" B::Keywords
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.13"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:59:26 2015: "Module" XML::Parser
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.41"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:59:34 2015: "Module" HTML::Template
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.95"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:59:38 2015: "Module" ActiveState::YAML
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.01"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 12:59:42 2015: "Module" ActiveState::RelocateTree
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.04"
+
+    *   "EXE_FILES: bin/reloc_perl"
+
+  Tue Mar 24 12:59:54 2015: "Module" ActivePerl::DocTools
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.04"
+
+    *   "EXE_FILES: bin/ap-update-html bin/ap-user-guide"
+
+  Tue Mar 24 12:59:59 2015: "Module" Win32::Process
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.16"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:00:04 2015: "Module" Win32::Pipe
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.025"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:00:10 2015: "Module" Math::Int64
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.30"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:00:14 2015: "Module" Win32::TieRegistry
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.28"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:00:19 2015: "Module" Win32::EventLog
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.077"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:00:26 2015: "Module" Compress::Raw::Zlib
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.068"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:00:36 2015: "Module" Compress::Raw::Bzip2
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.068"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:00:40 2015: "Module" HTTP::Server::Simple
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.44"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:00:51 2015: "Module" LWP::Protocol::https
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.06"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:01 2015: "Module" HTML::Form
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.03"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:05 2015: "Module" Text::Reform
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.20"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:09 2015: "Module" CPAN::Meta::Check
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.008"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:15 2015: "Module" Sub::Name
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.12"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:19 2015: "Module" Package::DeprecationManager
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.13"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:23 2015: "Module" MRO::Compat
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.12"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:28 2015: "Module" Eval::Closure
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.12"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:32 2015: "Module" Devel::GlobalDestruction
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.04"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:39 2015: "Module" Class::Load::XS
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.08"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:43 2015: "Module" GD::Text
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.86"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:48 2015: "Module" Test::Differences
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.63"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:01:53 2015: "Module" JSON::Any
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.32"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:02:07 2015: "Module" Bit::Vector
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 7.4"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:05:45 2015: "Module" ActiveState::Test
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.00"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:06:39 2015: "Module" Text::CSV_XS
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.16"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:06:51 2015: "Module" SQL::Statement
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.405"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:07:09 2015: "Module" Tkx
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.09"
+
+    *   "EXE_FILES: tkx-ed tkx-prove"
+
+  Tue Mar 24 13:08:21 2015: "Module" XML::Simple
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.20"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:08:26 2015: "Module" Term::ReadKey
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.32"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:09:14 2015: "Module" DBD::SQLite
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.42"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:09:26 2015: "Module" Win32API::File
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.1202"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:09:33 2015: "Module" Win32
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.51"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:09:39 2015: "Module" Win32API::Net
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.18"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:09:44 2015: "Module" Win32::Sound
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.52"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:09:49 2015: "Module" Win32::Shortcut
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.08"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:09:54 2015: "Module" Win32::Service
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.07"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:09:59 2015: "Module" Win32::Registry
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.12"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:03 2015: "Module" Win32::PerfLib
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.07"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:11 2015: "Module" Win32::OLE
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.1712"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:18 2015: "Module" Win32::ODBC
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.035"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:23 2015: "Module" Win32::NetResource
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.057"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:28 2015: "Module" Win32::NetAdmin
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.13"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:32 2015: "Module" Win32::Internet
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.087"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:42 2015: "Module" Win32::FileSecurity
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.09"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:46 2015: "Module" Win32::File
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.07"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:53 2015: "Module" Win32::Console::ANSI
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.08"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:10:58 2015: "Module" Win32::Console
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.10"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:11:02 2015: "Module" Win32::Clipboard
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.58"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:11:07 2015: "Module" Win32::AuthenticateUser
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.02"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:11:19 2015: "Module" Win32::API
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.80"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:11:31 2015: "Module" ap-iis-config
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1"
+
+    *   "EXE_FILES: bin/ap-iis-config"
+
+  Tue Mar 24 13:12:14 2015: "Module" threads
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.96"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:12:18 2015: "Module" Net
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.27"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:12:22 2015: "Module" lib
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.63"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:12:34 2015: "Module" autodie
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.25"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:12:39 2015: "Module" Unicode::Normalize
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.18"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:13:03 2015: "Module" Unicode::Collate
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.12"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:13:09 2015: "Module" Time::Piece
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.29"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:13:13 2015: "Module" Text::Balanced
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.03"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:13:40 2015: "Module" Test::Harness
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.35"
+
+    *   "EXE_FILES: bin/prove"
+
+  Tue Mar 24 13:13:45 2015: "Module" Term::ANSIColor
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 4.03"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:13:51 2015: "Module" Sys::Syslog
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.33"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:13:57 2015: "Module" Socket
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.018"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:14:05 2015: "Module" List::Util
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.41"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:14:10 2015: "Module" Pod::Usage
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.67"
+
+    *   "EXE_FILES: scripts\pod2usage"
+
+  Tue Mar 24 13:14:15 2015: "Module" Pod::Perldoc
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.25"
+
+    *   "EXE_FILES: perldoc"
+
+  Tue Mar 24 13:14:21 2015: "Module" Pod::Parser
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.63"
+
+    *   "EXE_FILES: scripts\podselect"
+
+  Tue Mar 24 13:14:24 2015: "Module" Pod::Escapes
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.07"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:14:29 2015: "Module" Pod::Checker
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.71"
+
+    *   "EXE_FILES: scripts\podchecker"
+
+  Tue Mar 24 13:14:32 2015: "Module" Perl::OSType
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.008"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:14:38 2015: "Module" Module::Metadata
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.000026"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:14:41 2015: "Module" Module::Load::Conditional
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.64"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:14:47 2015: "Module" Module::CoreList
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 5.20150220"
+
+    *   "EXE_FILES: corelist"
+
+  Tue Mar 24 13:17:38 2015: "Module" Math::BigInt
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.9993"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:17:43 2015: "Module" MIME::Base64
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.15"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:17:48 2015: "Module" Locale-Maketext
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.26"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:17:58 2015: "Module" Locale::Codes
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.34"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:18:20 2015: "Module" IO::Socket::IP
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.36"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:19:17 2015: "Module" IO::Compress
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.068"
+
+    *   "EXE_FILES: bin/zipdetails"
+
+  Tue Mar 24 13:19:36 2015: "Module" HTTP::Tiny
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.054"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:19:40 2015: "Module" Getopt::Long
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.45"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:19:44 2015: "Module" ExtUtils::Manifest
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.70"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:20:04 2015: "Module" ExtUtils::Install
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.68"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:20:10 2015: "Module" ExtUtils::Command
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.20"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:20:15 2015: "Module" ExtUtils::CBuilder
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.280220"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:21:06 2015: "Module" Encode
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.70"
+
+    *   "EXE_FILES: bin/enc2xs bin/piconv bin/encguess"
+
+  Tue Mar 24 13:21:11 2015: "Module" Digest::SHA
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 5.95"
+
+    *   "EXE_FILES: shasum"
+
+  Tue Mar 24 13:21:15 2015: "Module" Digest::MD5
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.54"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:21:30 2015: "Module" Devel::PPPort
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.28"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:21:36 2015: "Module" Data::Dumper
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.154"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:21:40 2015: "Module" Config::Perl::V
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.23"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:21:43 2015: "Module" CPAN::Meta::Requirements
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.133"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:21:46 2015: "Module" B::Debug
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.21"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:22:03 2015: "Module" Archive::Tar
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.04"
+
+    *   "EXE_FILES: bin/ptar bin/ptardiff bin/ptargrep"
+
+  Tue Mar 24 13:22:05 2015: "Module" mylib
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.02"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:22:20 2015: "Module" YAML::LibYAML
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.52"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:23:44 2015: "Module" WWW::Mechanize
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.74"
+
+    *   "EXE_FILES: bin/mech-dump"
+
+  Tue Mar 24 13:23:46 2015: "Module" Text::Glob
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.09"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:23:49 2015: "Module" Text::Autoformat
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.669004"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:23:51 2015: "Module" Term::ReadLine::Perl
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.0303"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:23:54 2015: "Module" Shell::Command
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.06"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:23:56 2015: "Module" Scope::Guard
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.20"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:23:59 2015: "Module" PPM::Repositories
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.20"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:24:07 2015: "Module" Net::Telnet
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.04"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:27:40 2015: "Module" Moose
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.1206"
+
+    *   "EXE_FILES: bin/moose-outdated"
+
+  Tue Mar 24 13:27:43 2015: "Module" GD::Graph
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.48"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:27:48 2015: "Module" File::Next
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.12"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:27:52 2015: "Module" Digest::SHA1
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 2.13"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:27:54 2015: "Module" Digest::HMAC
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.03"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:30:59 2015: "Module" Devel::NYTProf
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 5.06"
+
+    *   "EXE_FILES: bin/nytprofhtml bin/flamegraph.pl bin/nytprofcsv
+        bin/nytprofcalls bin/nytprofcg bin/nytprofmerge"
+
+  Tue Mar 24 13:31:09 2015: "Module" Date::Calc
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 6.3"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:31:13 2015: "Module" Data::Dump
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.22"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:32:16 2015: "Module" DBD::Pg
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 3.2.1"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:33:43 2015: "Module" DBD::Oracle
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.74"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:33:58 2015: "Module" DBD::ODBC
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.48"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:34:13 2015: "Module" DBD::CSV
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.48"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:34:16 2015: "Module" Class::Accessor
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.34"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:34:21 2015: "Module" ActiveState::Scineplex
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.01"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:34:26 2015: "Module" ActiveState::PerlCritic
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 10.00"
+
+    *   "EXE_FILES: bin/perlcritic-gui"
+
+  Tue Mar 24 13:34:44 2015: "Module" ActivePerl::PPM
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 4.19"
+
+    *   "EXE_FILES: bin/ppm bin/ppm-shell"
+
+  Tue Mar 24 13:34:46 2015: "Module" ActivePerl::CPAN::Config
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.00"
+
+    *   "EXE_FILES: "
+
+  Tue Mar 24 13:34:48 2015: "Module" ActivePerl::Config
+    *   "installed into: E:\Perl\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.05"
+
+    *   "EXE_FILES: "
+
+  Wed Jun  8 23:43:04 2016: "Module" Clone::PP
+    *   "installed into: E:\Perl\site\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.06"
+
+    *   "EXE_FILES: "
+
+  Wed Jun  8 23:43:33 2016: "Module" Sort::Naturally
+    *   "installed into: E:\Perl\site\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.03"
+
+    *   "EXE_FILES: "
+
+  Wed Jun  8 23:44:55 2016: "Module" Data::Printer
+    *   "installed into: E:\Perl\site\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 0.38"
+
+    *   "EXE_FILES: "
+
+  Thu Jun  9 20:22:30 2016: "Module" HTTP::SimpleLinkChecker
+    *   "installed into: E:\Perl\site\lib"
+
+    *   "LINKTYPE: dynamic"
+
+    *   "VERSION: 1.163"
+
+    *   "EXE_FILES: script/http_status"
+

@@ -1,0 +1,29 @@
+    syswrite FILEHANDLE,SCALAR,LENGTH,OFFSET
+    syswrite FILEHANDLE,SCALAR,LENGTH
+    syswrite FILEHANDLE,SCALAR
+            Attempts to write LENGTH bytes of data from variable SCALAR to
+            the specified FILEHANDLE, using write(2). If LENGTH is not
+            specified, writes whole SCALAR. It bypasses buffered IO, so
+            mixing this with reads (other than "sysread)"), "print",
+            "write", "seek", "tell", or "eof" may cause confusion because
+            the perlio and stdio layers usually buffer data. Returns the
+            number of bytes actually written, or "undef" if there was an
+            error (in this case the errno variable $! is also set). If the
+            LENGTH is greater than the data available in the SCALAR after
+            the OFFSET, only as much data as is available will be written.
+
+            An OFFSET may be specified to write the data from some part of
+            the string other than the beginning. A negative OFFSET specifies
+            writing that many characters counting backwards from the end of
+            the string. If SCALAR is of length zero, you can only use an
+            OFFSET of 0.
+
+            WARNING: If the filehandle is marked ":utf8", Unicode characters
+            encoded in UTF-8 are written instead of bytes, and the LENGTH,
+            OFFSET, and return value of "syswrite" are in (UTF8-encoded
+            Unicode) characters. The ":encoding(...)" layer implicitly
+            introduces the ":utf8" layer. Alternately, if the handle is not
+            marked with an encoding but you attempt to write characters with
+            code points over 255, raises an exception. See "binmode",
+            "open", and the open pragma.
+
