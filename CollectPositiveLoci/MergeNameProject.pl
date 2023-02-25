@@ -34,5 +34,3 @@ while (<>) {
 	
 	print OUT $merge, "\n";
 }
-
-

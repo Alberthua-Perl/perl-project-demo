@@ -1,9 +1,8 @@
 ﻿#!/usr/bin/perl
-#
+
 # Created on 2017.8.12 20:00 by HLF.
 # Usage: The Perl web scrapy is used to scrapy images from https://www.nvshens.com/g/<GroupNumber>,
 # e.g, https://www.nvshens.com/g/23589/	8 .
-#
 
 use warnings;
 use strict;
@@ -53,4 +52,4 @@ foreach my $WebSite (@url) {
 	}	
 }
 
-print "****** Scrapying successfully ! ******\n";
+print "*** Scrapying successfully ! ***\n";

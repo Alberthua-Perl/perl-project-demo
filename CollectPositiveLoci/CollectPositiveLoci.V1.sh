@@ -120,6 +120,3 @@ rm -rf $MasterDir/{IgnoredSample.txt,MergeNameProject.txt,SampleList.txt}
 
 echo -e "\n========== \033[44;37;5m All right. \033[0m  ==========\n"
 # BLOCK
-
-
-

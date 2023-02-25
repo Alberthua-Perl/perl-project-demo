@@ -8,10 +8,12 @@ use strict;
 
 open FASTQ, '<', 'part_of_C7G3BANXX.fastq' 
 	or die "Don't open the fastq file: $!";
+
 my $read_num;
 my $total_base;
 my $count;
 my ($Q20_base, $Q30_base);
+
 while (<FASTQ>) {
 	chomp;
 	$count++;
@@ -19,13 +21,14 @@ while (<FASTQ>) {
 		$read_num++;
 	} elsif (/\A[ATGCN]+/) {
 		$total_base += length $_;
-	} elsif ( $count%4 == 0 ) {
+	} elsif ($count%4 == 0) {
 		foreach my $each_base (split//,$_) {
 			$Q20_base++ if ( ord($each_base)-33 > 20 );
 			$Q30_base++ if ( ord($each_base)-33 > 30 );
 		}
 	}
 }
+
 print "Total reads: ", $read_num, "\n";
 print "Total bases: ", $total_base, "\n";
 print "Q20 bases: ", $Q20_base, "\nQ20%: ";

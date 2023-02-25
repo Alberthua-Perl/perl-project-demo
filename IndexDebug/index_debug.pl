@@ -11,8 +11,7 @@ use Data::Dumper;
 # File: index_debug.txt
 # Created on 2017.2.19 19:15 by HLF. 
 
-my %index_unit = (
-	
+my %index_unit = (	
 	# index for ddCAP or cHOP
 	ddCAP => {	  			  
 		'D760' => 'TTCAGCTC', 'D704' => 'GAGATTCC', 'D755' => 'TCATTGAG', 'D717' => 'ACAGTGGT',
@@ -32,7 +31,6 @@ my %index_unit = (
         'D735' => 'GTGCTACC', 'D744' => 'TTCCATTG', 'D715' => 'TTAGGCAT', 'D742' => 'TGTGGTTG',
 		'UMI-12N' => 'NNNNNNNNNNNN'	
 	},
-	
 	# index for OncoAim or BRCAim				
 	OncoAim => {			  			
 		 'D704' => 'GGAATCTC', 'D711' => 'GCGCGAGA', 'D705' => 'TTCTGAAT', 'D702' => 'TCTCCGGA',
@@ -48,41 +46,36 @@ my ($count, $i7_i5, %debug);
 while (<>) {
 	chomp;
 	my @index_info = split;							
-		# input file format: library, i7 ID, i7 index, i5 ID, i5 index
-	
-	if ( $index_info[0] =~ /OncoAim|BRCA.*?/i ) {
+	# input file format: library, i7 ID, i7 index, i5 ID, i5 index
+	if ($index_info[0] =~ /OncoAim|BRCA.*?/i) {
 		$index_info[0] = 'OncoAim';
-
-		if ( $index_unit{ $index_info[0] }{ $index_info[-4] } eq $index_info[-3]
-				and $index_unit{ $index_info[0] }{ $index_info[-2] } eq $index_info[-1] ) {
-					# i7 index and i5 index must be together in OncoAim or BRCAim.
+		if ($index_unit{ $index_info[0] }{ $index_info[-4] } eq $index_info[-3]
+				and $index_unit{ $index_info[0] }{ $index_info[-2] } eq $index_info[-1]) {
+				# i7 index and i5 index must be together in OncoAim or BRCAim.
 			$i7_i5 = $index_info[-4]." ".$index_info[-2];
 			$debug{$i7_i5}++;				
 		} else {
 			my $error = $index_info[-4] || $index_info[-2];
 			print "\nThe pair of index  $error for OncoAim or BRCAim is error!\n";
 		}
-
-	} elsif ( $index_info[0] =~ /ddCAP|cHOP/i ) {
+	} elsif ($index_info[0] =~ /ddCAP|cHOP/i) {
 		$index_info[0] = 'ddCAP';
-
-		if ( $index_unit{ $index_info[0] }{ $index_info[-4] } eq $index_info[-3]
-				and $index_unit{ $index_info[0] }{ $index_info[-2] } eq $index_info[-1] ) {
+		if ($index_unit{ $index_info[0] }{ $index_info[-4] } eq $index_info[-3]
+				and $index_unit{ $index_info[0] }{ $index_info[-2] } eq $index_info[-1]) {
 			$i7_i5 = $index_info[-4]." ".$index_info[-2];
 			$debug{$i7_i5}++;
 		} else {
 			my $error = $index_info[-4] || $index_info[-2];
 			print "\nThe pair of index  $error for ddCAP or cHOP is error!\n";
 		}
-
 	}
 	$count++;
 }
 print "\n$count libs on this run!\n";						
-	# calculate the number of libs 
+# calculate the number of libs 
 print OUT Data::Dumper->Dump( [ \%debug ], [ qw(*debug) ] );
 
-my @rep = grep { $debug{$_} == 2 } keys %debug;		# find the same index
+my @rep = grep { $debug{$_} == 2 } keys %debug;    # find the same index
 
 unless (@rep) {
 	print "All indexes are correct!\nNo repeat!\nPass!\n";
@@ -90,4 +83,3 @@ unless (@rep) {
 	my $rep = join "\n", @rep;
 	print "$rep repeated!\nAttention!!!\n";
 }
-
