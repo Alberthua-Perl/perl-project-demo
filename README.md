@@ -1,5 +1,5 @@
 ## Perl Learning and Project Demo
 
-- 🐫 The repository includes Bioinfomatrics about NGS, system-admin scripts and so on.
+### 💪 We all *NEVER* forget Perl.
 
-- 💪 We all never forget Perl.
+🐫 The repository includes Bioinfomatrics about NGS, system-admin scripts and so on.
